@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DrugsComponent } from './components/drugs/drugs.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CoreModule } from './core/core.module';
+import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     HomeComponent,
     DrugsComponent,
-    RegisterComponent
+    RegisterComponent,
+    DrugFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule
   ],
