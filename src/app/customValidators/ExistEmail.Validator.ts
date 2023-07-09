@@ -26,7 +26,7 @@ export function existEmailValidator(existEmails: string[]): ValidatorFn {
     let emailVal: string = control.value;
     if(emailVal.length==0 && control.untouched)
       return null;
-    console.log(existEmails)
+    // console.log(existEmails)
     let validationError = {'existEmail': { 'value': emailVal }}
     let foundEmail= existEmails.includes(emailVal);
     return foundEmail? validationError : null;

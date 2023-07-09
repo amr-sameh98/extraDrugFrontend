@@ -1,26 +1,76 @@
 <div class="container">
   <form [formGroup]="userRegFrm" class="m-3" (ngSubmit)="submit()">
     <div class="mb-3">
-      <label for="fName" class="form-label">FullName</label>
+      <label for="fName" class="form-label">First Name</label>
       <!-- [class.is-invalid]="fullName?.invalid"
       [class.is-valid]="fullName?.valid" -->
       <input
         type="text"
-        formControlName="fullName"
+        formControlName="firstName"
         class="form-control"
         id="fName"
         name="userFname"
       />
       <div
         class="alert alert-warning"
-        [hidden]="fullName?.valid || fullName?.untouched"
+        [hidden]="firstName?.valid || firstName?.untouched"
       >
-        <small *ngIf="fullName?.errors?.['required']">
-          Full Name is required
+        <small *ngIf="firstName?.errors?.['required']">
+          First Name is required
         </small>
-        <small *ngIf="fullName?.errors?.['pattern']">
-          Full name must be 10 letters at least,
-          <b>{{fullName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        <small *ngIf="firstName?.errors?.['pattern']">
+          First name must be 3 letters at least,
+          <b>{{firstName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="lName" class="form-label">Last Name</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="lastName"
+        class="form-control"
+        id="lName"
+        name="userLname"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="lastName?.valid || lastName?.untouched"
+      >
+        <small *ngIf="lastName?.errors?.['required']">
+          Last Name is required
+        </small>
+        <small *ngIf="lastName?.errors?.['pattern']">
+          Last name must be 3 letters at least,
+          <b>{{lastName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="uName" class="form-label">Username</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        id="uName"
+        name="username"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="username?.valid || username?.untouched"
+      >
+        <small *ngIf="username?.errors?.['required']">
+          Username is required
+        </small>
+        <small *ngIf="username?.errors?.['pattern']">
+          Username must be 8 letters at least,
+          <b>{{username?.errors?.['pattern'].actualValue}}</b> dosen't match.
         </small>
       </div>
     </div>
@@ -50,88 +100,32 @@
       </div>
     </div>
 
-    <div formArrayName="phoneNo">
+    <div class="mb-3">
+      <label for="phoneNum" class="form-label">Phone Number</label>
+      <input
+        type="text"
+        formControlName="PhoneNumber"
+        class="form-control"
+        id="phoneNum"
+        name="phonenumber"
+      />
       <div
-        class="input-group mb-3"
-        *ngFor="let phoneNo of phoneNumbers.controls; let i = index"
+        class="alert alert-warning"
+        [hidden]="PhoneNumber?.valid || PhoneNumber?.untouched"
       >
-        <label for="{{ 'uPhone-' + i }}" class="form-label me-4 d-block"
-          >Phone No. #{{ i + 1 }}</label
-        >
-        <input
-          type="text"
-          [formControlName]="i"
-          class="form-control me-4 w-50 d-block"
-          id="{{ 'uPhone-' + i }}"
-          name="{{ 'userPhone-' + i }}"
-        />
-        <button
-          type="button"
-          class="btn btn-primary input-group-addon"
-          (click)="addPhoneNo($event)"
-        >
-          +
-        </button>
-      </div>
-    </div>
-
-    <!-- <div formArrayName="phoneNo">
-      <div
-        class="mb-3"
-        *ngFor="let phoneNo of phoneNumbers.controls; let i = index"
-      >
-        <label for="{{ 'uPhone-' + i }}" class="form-label"
-          >Phone No. #{{ i + 1 }}</label
-        >
-        <input
-          type="text"
-          [formControlName]="i"
-          class="form-control d-inline-block"
-          id="{{ 'uPhone-' + i }}"
-          name="{{ 'userPhone-' + i }}"
-        />
-        <button
-          type="button"
-          class="btn btn-primary d-inline-block"
-          (click)="addPhoneNo($event)"
-        >
-          +
-        </button>
-      </div>
-    </div> -->
-
-    <div formGroupName="address">
-      <div class="mb-3">
-        <label for="uCity" class="form-label">City</label>
-        <input
-          type="text"
-          formControlName="city"
-          class="form-control"
-          id="uCity"
-          name="usercity"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label for="uPostalCode" class="form-label">Postal Code</label>
-        <input
-          type="number"
-          formControlName="postalCode"
-          class="form-control"
-          id="uPostalCode"
-          name="userpostalcode"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label for="uStreet" class="form-label">Street</label>
-        <input
-          type="text"
-          formControlName="street"
-          class="form-control"
-          id="uStreet"
-          name="userstreet"
-        />
+        <small *ngIf="PhoneNumber?.errors?.['required']">
+          Phone Number is required
+        </small>
+        <small *ngIf="PhoneNumber?.errors?.['minlength']">
+          Phone Number min Length is 11
+        </small>
+        <small *ngIf="PhoneNumber?.errors?.['maxlength']">
+          Phone Number max Length is 11
+        </small>
+        <small *ngIf="PhoneNumber?.errors?.['pattern']">
+          This phonenumber
+          <b>{{PhoneNumber?.errors?.['pattern'].value}}</b> dosen't match.
+        </small>
       </div>
     </div>
 
@@ -144,12 +138,28 @@
         id="uPass"
         name="userPass"
       />
+
       <div
+        class="alert alert-warning"
+        [hidden]="password?.valid || password?.untouched"
+      >
+        <small *ngIf="password?.errors?.['required']">
+          Password is required
+        </small>
+        <small *ngIf="password?.errors?.['pattern']">
+          minimum eight characters<br />
+          at least one Capital letter<br />
+          at least one number<br />
+          at least one special character
+        </small>
+      </div>
+
+      <!-- <div
         class="alert alert-warning"
         *ngIf="password?.errors?.['required'] && password?.touched"
       >
         Password is required
-      </div>
+      </div> -->
     </div>
 
     <div class="mb-3">
@@ -178,6 +188,10 @@
       <!-- </div> -->
     </div>
 
+    <div class="alert alert-warning" *ngIf="ifError">
+      <small> {{ errorMessage }} </small>
+    </div>
+
     <button
       [disabled]="userRegFrm.invalid"
       type="submit"
@@ -186,4 +200,12 @@
       Submit
     </button>
   </form>
+  <!-- <hr />
+
+  <div class="text-danger">
+    <h3>To be removed [For test]:</h3>
+    <div>Form Value:{{ userRegFrm.value | json }}</div>
+
+    <div>Password errors:{{ password?.errors | json }}</div>
+  </div> -->
 </div>

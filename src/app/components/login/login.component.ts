@@ -14,12 +14,15 @@ import {Location} from '@angular/common';
 })
 export class LoginComponent {
   userLoginForm: FormGroup;
-  isUserLogged: boolean=false;
+  isUserLogged: boolean = false;
+  ifError : boolean = false
+  errorMessage: string = ''
 
+  // Validators.pattern('^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$')
 
   constructor(private fb: FormBuilder , private authService: UserAuthService , private router: Router , private location:Location) {
     this.userLoginForm = fb.group({
-      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$') ]],
+      email: ['', [Validators.required,  ]],
       password: ['', [Validators.required]],
     },);
 
@@ -29,30 +32,37 @@ export class LoginComponent {
     this.isUserLogged= this.authService.isUserLogged;
   }
 
-  get username() {
-    return this.userLoginForm.get('username');
+  get email() {
+    return this.userLoginForm.get('email');
   }
 
   get password() {
     return this.userLoginForm.get('password');
   }
 
-  login()
+   login()
   {
-    this.authService.login(this.username?.value , this.password?.value);
-    this.isUserLogged= this.authService.isUserLogged;
-    // this.router.navigate([''], {replaceUrl: true});
-    // history.pushState(null, '');
-    // this.location.back();
-    // this.location.historyGo(-2);
-    // console.log(this.location.getState());
+    this.authService.login(this.email?.value , this.password?.value).subscribe(res=>{
+          console.log(res);
+          console.log("succes");
+          let token = res.data.token ;
+          let role = res.data.roles[0]
+          localStorage.setItem("token", token);
+          localStorage.setItem("role", role);
 
-    // this.router.navigate(['']);
+
+          console.log(token);
+          history.pushState(null, '');
+          this.authService.isloggedSubject.next(true);
+          this.isUserLogged= this.authService.isUserLogged;
+          this.router.navigate([this.authService.redirectUrl])
+        },err=>{
+          console.log(err);
+          console.log(err.error.errors[0]);
+          this.errorMessage = err.error.errors[0]
+          this.ifError = true
+        }
+    )
   }
 
-  // logout()
-  // {
-  //   this.authService.logout();
-  //   this.isUserLogged= this.authService.isUserLogged;
-  // }
 }

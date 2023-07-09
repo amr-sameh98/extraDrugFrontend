@@ -1,0 +1,119 @@
+<div class="container">
+  <form [formGroup]="drugForm" class="m-3" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="arabicName" class="form-label">Arabic Name</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="arabicName"
+        class="form-control"
+        id="arabicName"
+        name="arabicName"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="arabicName?.valid || arabicName?.untouched"
+      >
+        <small *ngIf="arabicName?.errors?.['required']">
+          Arabic Name is required
+        </small>
+        <small *ngIf="arabicName?.errors?.['pattern']">
+          Arabic name must be 3 letters at least,
+          <b>{{arabicName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="englishName" class="form-label">English Name</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="englishName"
+        class="form-control"
+        id="englishName"
+        name="englishName"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="englishName?.valid || englishName?.untouched"
+      >
+        <small *ngIf="englishName?.errors?.['required']">
+          English Name is required
+        </small>
+        <small *ngIf="englishName?.errors?.['pattern']">
+          English name must be 3 letters at least,
+          <b>{{englishName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="parcode" class="form-label">Parcode</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="parcode"
+        class="form-control"
+        id="parcode"
+        name="parcode"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="parcode?.valid || parcode?.untouched"
+      >
+        <small *ngIf="parcode?.errors?.['required']">
+          Parcode is required
+        </small>
+        <small *ngIf="parcode?.errors?.['pattern']">
+          Parcode must be 3 letters at least,
+          <b>{{parcode?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="purpose" class="form-label">Purpose</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="purpose"
+        class="form-control"
+        id="purpose"
+        name="purpose"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="purpose?.valid || purpose?.untouched"
+      >
+        <small *ngIf="purpose?.errors?.['required']">
+          Purpose is required
+        </small>
+        <small *ngIf="purpose?.errors?.['pattern']">
+          Purpose must be 3 letters at least,
+          <b>{{purpose?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <!-- <div class="alert alert-warning" *ngIf="ifError">
+      <small> {{ errorMessage }} </small>
+    </div> -->
+
+    <button [disabled]="drugForm.invalid" type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+  <!-- <hr />
+
+  <div class="text-danger">
+    <h3>To be removed [For test]:</h3>
+    <div>Form Value:{{ userRegFrm.value | json }}</div>
+
+    <div>Password errors:{{ password?.errors | json }}</div>
+  </div> -->
+</div>

@@ -1,12 +1,8 @@
 export interface Iuser {
-  fullName: string;
-  email: string;
+  firstName: string;
+  lastName: string
   username: string;
-  phoneNo: string[];
-  address: {
-    city: string;
-    postalCode: string;
-    street: string
-  };
+  email: string;
   password: string;
+  PhoneNumber: string;
 }

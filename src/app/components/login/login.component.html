@@ -3,24 +3,22 @@
     <div class="mb-3">
       <!-- [class.is-invalid]="fullName?.invalid"
       [class.is-valid]="fullName?.valid" -->
-      <label for="uname" class="form-label">Username</label>
+      <label for="email" class="form-label">Email</label>
       <input
-        type="text"
-        formControlName="username"
+        type="email"
+        formControlName="email"
         class="form-control"
-        id="uname"
-        name="username"
+        id="email"
+        name="email"
       />
       <div
         class="alert alert-warning"
-        [hidden]="username?.valid || username?.untouched"
+        [hidden]="email?.valid || email?.untouched"
       >
-        <small *ngIf="username?.errors?.['required']">
-          Full Name is required
-        </small>
-        <small *ngIf="username?.errors?.['pattern']">
-          Full name must be 5 letters at least,
-          <b>{{username?.errors?.['pattern'].actualValue}}</b> dosn't match.
+        <small *ngIf="email?.errors?.['required']"> Email is required </small>
+        <small *ngIf="email?.errors?.['pattern']">
+          this email
+          <b>{{email?.errors?.['pattern'].actualValue}}</b> dosen't match.
         </small>
       </div>
     </div>
@@ -44,6 +42,10 @@
       </div>
     </div>
 
+    <div class="alert alert-warning" *ngIf="ifError">
+      <small> {{ errorMessage }} </small>
+    </div>
+
     <button
       [disabled]="userLoginForm.invalid"
       type="submit"
@@ -52,25 +54,4 @@
       Login
     </button>
   </form>
-
-  <!-- <hr />
-  <div class="text-danger">
-    <h3>To be removed [For test]:</h3>
-    <div>Form Value:{{ userLoginForm.value | json }}</div>
-
-    <div>
-      Form Errors:{{ userLoginForm.errors | json }}
-      <br />
-      test {{userLoginForm?.errors?.['UnmatchedPassword']}}
-    </div>
-
-    <div>
-
-      Full Name errors:{{ fullName?.errors | json }}
-    </div>
-    <div>
-
-      Referral errors:{{ userLoginForm.get("referralOther")?.errors | json }}
-    </div>
-  </div> -->
 </div>

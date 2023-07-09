@@ -22,7 +22,20 @@
             [routerLink]="['drugs']"
             [routerLinkActive]="'active'"
             [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged"
             >Drugs</a
+          >
+        </li>
+        <li class="nav-item">
+          <!-- aria-current="page" -->
+
+          <a
+            class="nav-link"
+            [routerLink]="['drugForm']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged"
+            >Add Drug</a
           >
         </li>
         <li class="nav-item">
