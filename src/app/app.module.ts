@@ -14,6 +14,8 @@ import { DrugsComponent } from './components/drugs/drugs.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
+import { CoreModule } from './core/core.module';
+// import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { DrugFormComponent } from './components/drug-form/drug-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
