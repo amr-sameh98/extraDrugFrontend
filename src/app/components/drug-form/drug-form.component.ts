@@ -77,7 +77,10 @@ export class DrugFormComponent implements OnInit {
           this.companyId?.setValue(this.drug.companyId);
           this.typeId?.setValue(this.drug.typeId);
           this.categoryId?.setValue(this.drug.categoryId);
-          this.effectiveMatrials?.setValue(this.drug.effectiveMatrials);
+          this.effectiveMaterialElements=this.drug.effectiveMatrials;
+          console.log(this.drug.effectiveMatrials);
+
+          //this.effectiveMaterialElements=this.drug.effectiveMatrials;
 
         },
       });
@@ -172,6 +175,9 @@ export class DrugFormComponent implements OnInit {
   }
 
   submit() {
+    if (this.effectiveMaterialElements.length!==0) {
+      
+    
     let drugModel: Idrug = this.drugForm.value as Idrug;
     drugModel.companyId = Number(this.companyId?.value)
     drugModel.typeId = Number(this.typeId?.value)
@@ -191,5 +197,7 @@ export class DrugFormComponent implements OnInit {
       }
       this.router.navigate(['/drugs']);
     }
+    }
+
   }
 }
