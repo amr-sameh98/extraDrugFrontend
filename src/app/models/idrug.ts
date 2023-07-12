@@ -9,5 +9,5 @@ export interface Idrug {
   companyName: string
   typeId: number;
   categoryId: number;
-  effectiveMatrials: string[];
+  effectiveMatrials: {}[];
 }

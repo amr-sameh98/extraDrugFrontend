@@ -12,11 +12,15 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./drug-form.component.css']
 })
 export class DrugFormComponent implements OnInit {
+  effectiveMaterialElement: string = '';
+  //this array is for a specific drug
+  effectiveMaterialElements: { id?: number , name: string }[] = [];
   drugForm: FormGroup;
   companiesList: { id: number , name: string }[] = []
   typesList: { id: number , name: string }[] = []
   categoriesList: { id: number , name: string }[] = []
-  effectiveMatrialsList: { id: number , name: string }[] = []
+  //this array is for a all drugs effective Materials
+  effectiveMatrialsList: { id?: number , name: string }[] = []
   httpOption;
   token: any
   drugId: any;
@@ -73,6 +77,8 @@ export class DrugFormComponent implements OnInit {
           this.companyId?.setValue(this.drug.companyId);
           this.typeId?.setValue(this.drug.typeId);
           this.categoryId?.setValue(this.drug.categoryId);
+          this.effectiveMatrials?.setValue(this.drug.effectiveMatrials);
+
         },
       });
     }
@@ -114,6 +120,9 @@ export class DrugFormComponent implements OnInit {
   get categoryId() {
     return this.drugForm.get('categoryId');
   }
+  get effectiveMatrials() {
+    return this.drugForm.get('effectiveMatrials');
+  }
 
   getAllCompanies() {
    return this.httpClient.get<any>("http://localhost:5250/api/drug-companies" ).subscribe(data => {
@@ -138,17 +147,36 @@ export class DrugFormComponent implements OnInit {
 
    getAllEffectiveMatrials() {
     return this.httpClient.get<any>("http://localhost:5250/api/effective-matrials").subscribe(data => {
-    //  console.log(data);
-     this.effectiveMatrialsList = data.data
+      this.effectiveMatrialsList = data.data;
+
+      this.effectiveMatrialsList =[{id:1,name:'dddd'}]
     })
    }
+
+   addEffectiveMaterial(elementname:any){
+    if (elementname!=='') {
+      let index=this.effectiveMatrialsList.findIndex((oldelement)=>oldelement.name==elementname);
+  if (index==-1) {
+  this.effectiveMaterialElements.push({"name":elementname});
+  }else{
+  this.effectiveMaterialElements.push(this.effectiveMatrialsList[index]);
+  }
+   this.effectiveMaterialElement='';
+    }
+  console.log(this.effectiveMaterialElements);
+  }
+  removeeffectiveMaterial(element:any){
+    this.effectiveMaterialElements=this.effectiveMaterialElements.filter((x)=>x.name!=element.name);
+    console.log(this.effectiveMaterialElements);
+    
+  }
 
   submit() {
     let drugModel: Idrug = this.drugForm.value as Idrug;
     drugModel.companyId = Number(this.companyId?.value)
     drugModel.typeId = Number(this.typeId?.value)
     drugModel.categoryId = Number(this.categoryId?.value)
-    drugModel.effectiveMatrials = []
+    drugModel.effectiveMatrials = this.effectiveMaterialElements
 
     if (this.drugForm.status == 'VALID') {
       if (this.drugId == 0) {

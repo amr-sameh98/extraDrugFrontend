@@ -150,26 +150,52 @@
         </option>
       </select>
     </div>
-
-    <!-- <div class="mb-3">
+<!--  Effective Materials  start-->
+    <div class="mb-3">
       <label for="effectiveMatrials" class="form-label"
         >Effective Materials</label
       >
-      <select
+      <div>
+      <input
+      [(ngModel)]='effectiveMaterialElement'
+        list="effectiveMatrialsList"
         class="form-select"
         aria-label="Default select example"
         formControlName="effectiveMatrials"
         name="effectiveMatrials"
         id="effectiveMatrials"
-      >
+      />
+      <button class="btn btn-primary col-2 mx-3" 
+        *ngIf="effectiveMaterialElement!=''"
+          (click)="addEffectiveMaterial(effectiveMaterialElement)"
+          >add</button></div>
+      <datalist id="effectiveMatrialsList">
         <option
           *ngFor="let item of effectiveMatrialsList; index as i"
-          [value]="item.id"
+          [value]="item.name"
+        ></option>
+      </datalist>
+      <div
+       class="alert alert-warning"
+       [hidden]="effectiveMaterialElements.length!=0 || effectiveMatrials?.untouched"
         >
-          {{ item.name }}
-        </option>
-      </select>
-    </div> -->
+       <small *ngIf="effectiveMaterialElements.length==0">
+        Effective Materials is required
+       </small>
+      </div>
+     
+      <div>
+        <div class="btn btn-warning m-1" 
+      *ngFor="let x of effectiveMaterialElements let i=index"
+      >{{effectiveMaterialElements[i].name}} <i 
+      (click)="removeeffectiveMaterial(effectiveMaterialElements[i])"
+       class="text-danger fs-5 bi bi-x-circle"
+      ></i></div>
+      </div>
+      
+      
+    </div>
+<!--  Effective Materials end -->
 
     <div class="mb-3">
       <label for="purpose" class="form-label">Is Trading Permitted</label>
