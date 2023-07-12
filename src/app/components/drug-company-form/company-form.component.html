@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="companyForm" class="m-3" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="companyName" class="form-label">Comapny Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        id="companyName"
+        name="companyName"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="name?.valid || name?.untouched"
+      >
+        <small *ngIf="name?.errors?.['required']">
+          Comapny Name is required
+        </small>
+        <small *ngIf="name?.errors?.['pattern']">
+          Company name must be 3 letters at least,
+          <b>{{name?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <container-element [ngSwitch]="companyId">
+      <button
+        *ngSwitchCase="0"
+        [disabled]="companyForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+      <button
+        *ngSwitchDefault
+        [disabled]="companyForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Edit
+      </button>
+    </container-element>
+  </form>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="typeForm" class="m-3" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="typeName" class="form-label">Type Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        id="typeName"
+        name="typeName"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="name?.valid || name?.untouched"
+      >
+        <small *ngIf="name?.errors?.['required']">
+          Type Name is required
+        </small>
+        <small *ngIf="name?.errors?.['pattern']">
+          Type name must be 3 letters at least,
+          <b>{{name?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <container-element [ngSwitch]="typeId">
+      <button
+        *ngSwitchCase="0"
+        [disabled]="typeForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+      <button
+        *ngSwitchDefault
+        [disabled]="typeForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Edit
+      </button>
+    </container-element>
+  </form>
+</div>

@@ -6,21 +6,21 @@
       [class.is-valid]="fullName?.valid" -->
       <input
         type="text"
-        formControlName="arabicName"
+        formControlName="ar_Name"
         class="form-control"
         id="arabicName"
         name="arabicName"
       />
       <div
         class="alert alert-warning"
-        [hidden]="arabicName?.valid || arabicName?.untouched"
+        [hidden]="ar_Name?.valid || ar_Name?.untouched"
       >
-        <small *ngIf="arabicName?.errors?.['required']">
+        <small *ngIf="ar_Name?.errors?.['required']">
           Arabic Name is required
         </small>
-        <small *ngIf="arabicName?.errors?.['pattern']">
+        <small *ngIf="ar_Name?.errors?.['pattern']">
           Arabic name must be 3 letters at least,
-          <b>{{arabicName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+          <b>{{ar_Name?.errors?.['pattern'].actualValue}}</b> dosen't match.
         </small>
       </div>
     </div>
@@ -31,21 +31,21 @@
       [class.is-valid]="fullName?.valid" -->
       <input
         type="text"
-        formControlName="englishName"
+        formControlName="en_Name"
         class="form-control"
         id="englishName"
         name="englishName"
       />
       <div
         class="alert alert-warning"
-        [hidden]="englishName?.valid || englishName?.untouched"
+        [hidden]="en_Name?.valid || en_Name?.untouched"
       >
-        <small *ngIf="englishName?.errors?.['required']">
+        <small *ngIf="en_Name?.errors?.['required']">
           English Name is required
         </small>
-        <small *ngIf="englishName?.errors?.['pattern']">
+        <small *ngIf="en_Name?.errors?.['pattern']">
           English name must be 3 letters at least,
-          <b>{{englishName?.errors?.['pattern'].actualValue}}</b> dosen't match.
+          <b>{{en_Name?.errors?.['pattern'].actualValue}}</b> dosen't match.
         </small>
       </div>
     </div>
@@ -100,6 +100,91 @@
       </div>
     </div>
 
+    <div class="mb-3">
+      <label for="companyId" class="form-label">Company</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        formControlName="companyId"
+        name="company"
+        id="companyId"
+      >
+        <option
+          *ngFor="let company of companiesList; index as i"
+          [value]="company.id"
+        >
+          {{ company.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="typeId" class="form-label">Type</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        formControlName="typeId"
+        name="type"
+        id="typeId"
+      >
+        <option *ngFor="let type of typesList; index as i" [value]="type.id">
+          {{ type.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="categoryId" class="form-label">Category</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        formControlName="categoryId"
+        name="category"
+        id="categoryId"
+      >
+        <option
+          *ngFor="let category of categoriesList; index as i"
+          [value]="category.id"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- <div class="mb-3">
+      <label for="effectiveMatrials" class="form-label"
+        >Effective Materials</label
+      >
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        formControlName="effectiveMatrials"
+        name="effectiveMatrials"
+        id="effectiveMatrials"
+      >
+        <option
+          *ngFor="let item of effectiveMatrialsList; index as i"
+          [value]="item.id"
+        >
+          {{ item.name }}
+        </option>
+      </select>
+    </div> -->
+
+    <div class="mb-3">
+      <label for="purpose" class="form-label">Is Trading Permitted</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="true"
+          id="permitted"
+          formControlName="isTradingPermitted"
+        />
+        <label class="form-check-label" for="permitted">Permitted</label>
+      </div>
+    </div>
+
     <!-- <div class="alert alert-warning" *ngIf="ifError">
       <small> {{ errorMessage }} </small>
     </div> -->
@@ -108,12 +193,4 @@
       Submit
     </button>
   </form>
-  <!-- <hr />
-
-  <div class="text-danger">
-    <h3>To be removed [For test]:</h3>
-    <div>Form Value:{{ userRegFrm.value | json }}</div>
-
-    <div>Password errors:{{ password?.errors | json }}</div>
-  </div> -->
 </div>

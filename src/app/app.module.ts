@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
+// import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { AuthInterceptor } from '';
 
 
 
@@ -15,6 +17,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
 import { CoreModule } from './core/core.module';
+import { TypeFormComponent } from './components/drug-type-form/type-form.component';
+import { CategoryFormComponent } from './components/drug-category-form/category-form.component';
+import { CompanyFormComponent } from './components/drug-company-form/company-form.component';
+import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
+import { TypesComponent } from './components/drug-types/types.component';
+import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
+import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
+// import { AuthInterceptor } from './core/auth.interceptor';
 // import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
 @NgModule({
@@ -25,7 +35,14 @@ import { CoreModule } from './core/core.module';
     HomeComponent,
     DrugsComponent,
     RegisterComponent,
-    DrugFormComponent
+    DrugFormComponent,
+    TypeFormComponent,
+    CategoryFormComponent,
+    CompanyFormComponent,
+    AlertMsgComponent,
+    TypesComponent,
+    DrugCompanyComponent,
+    DrugCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +52,7 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

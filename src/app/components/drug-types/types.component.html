@@ -1,0 +1,33 @@
+<a
+  type="button"
+  class="btn btn-primary mt-4 mb-3"
+  [routerLink]="['/typeForm/0/edit']"
+>
+  Add New Type
+</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let type of typesList; index as i">
+      <td>{{ type.name }}</td>
+      <td>
+        <i
+          style="cursor: pointer"
+          class="fs-3 text-info mx-1 bi bi-pencil-square"
+          [routerLink]="['/typeForm', type.id, 'edit']"
+        ></i>
+        <span (click)="deleteType(type.id)">
+          <i
+            style="cursor: pointer"
+            class="fs-3 text-danger mx-1 bi bi-trash3"
+          ></i>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

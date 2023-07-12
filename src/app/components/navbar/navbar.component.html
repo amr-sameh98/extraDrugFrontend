@@ -15,8 +15,6 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <!-- aria-current="page" -->
-
           <a
             class="nav-link"
             [routerLink]="['drugs']"
@@ -27,15 +25,33 @@
           >
         </li>
         <li class="nav-item">
-          <!-- aria-current="page" -->
-
           <a
             class="nav-link"
-            [routerLink]="['drugForm']"
+            [routerLink]="['drugTypes']"
             [routerLinkActive]="'active'"
             [routerLinkActiveOptions]="{ exact: true }"
             [hidden]="!isUserLogged"
-            >Add Drug</a
+            >Drug Types</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['drugCompanies']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged"
+            >Drug Companies</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['drugCategories']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged"
+            >Drug Categories</a
           >
         </li>
         <li class="nav-item">
@@ -51,8 +67,6 @@
           >
         </li>
         <li class="nav-item">
-          <!-- aria-current="page" -->
-
           <a
             class="nav-link"
             [routerLink]="['register']"
@@ -74,12 +88,6 @@
             Logout
           </button>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li> -->
       </ul>
     </div>
   </div>

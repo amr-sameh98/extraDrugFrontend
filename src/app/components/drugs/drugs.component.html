@@ -1,1 +1,42 @@
-<p>drugs works!</p>
+<button type="button" class="btn btn-primary mt-4 mb-3" (click)="AddNewDrug()">
+  Add New Drug
+</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>English Name</th>
+      <th>Parcode</th>
+      <th>Purpose</th>
+      <th>Company</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let drug of drugsList; index as i">
+      <td>{{ drug.en_Name }}</td>
+      <td>{{ drug.parcode }}</td>
+      <td>{{ drug.purpose }}</td>
+      <td>
+        {{ drug.companyName }}
+        <!-- <span *ngFor="let company of companiesList; index as j">
+          <span *ngIf="drug.companyId == company.id">
+            {{ company.name }}
+          </span>
+        </span> -->
+      </td>
+      <td>
+        <i
+          style="cursor: pointer"
+          class="fs-3 text-info mx-1 bi bi-pencil-square"
+          [routerLink]="['/drugForm', drug.id, 'edit']"
+        ></i>
+        <span (click)="deleteDrug(drug.id)">
+          <i
+            style="cursor: pointer"
+            class="fs-3 text-danger mx-1 bi bi-trash3"
+          ></i>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
