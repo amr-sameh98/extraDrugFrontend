@@ -47,7 +47,7 @@ export class DrugFormComponent implements OnInit {
       categoryId: ['', [Validators.required]],
       effectiveMatrials: [''],
     }, );
-    this.token = localStorage.getItem('token');
+    //this.token = localStorage.getItem('token');
     this.httpOption = {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -80,7 +80,6 @@ export class DrugFormComponent implements OnInit {
           this.effectiveMaterialElements=this.drug.effectiveMatrials;
           console.log(this.drug.effectiveMatrials);
 
-          //this.effectiveMaterialElements=this.drug.effectiveMatrials;
 
         },
       });
@@ -151,8 +150,6 @@ export class DrugFormComponent implements OnInit {
    getAllEffectiveMatrials() {
     return this.httpClient.get<any>("http://localhost:5250/api/effective-matrials").subscribe(data => {
       this.effectiveMatrialsList = data.data;
-
-      this.effectiveMatrialsList =[{id:1,name:'dddd'}]
     })
    }
 
