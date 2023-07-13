@@ -24,6 +24,7 @@ import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
 import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
+import { UpdateUserRoleComponent } from './components/update-user-role/update-user-role.component';
 // import { AuthInterceptor } from './core/auth.interceptor';
 // import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
@@ -42,7 +43,8 @@ import { DrugCategoriesComponent } from './components/drug-categories/drug-categ
     AlertMsgComponent,
     TypesComponent,
     DrugCompanyComponent,
-    DrugCategoriesComponent
+    DrugCategoriesComponent,
+    UpdateUserRoleComponent
   ],
   imports: [
     BrowserModule,
