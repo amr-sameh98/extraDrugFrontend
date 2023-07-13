@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 // import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { AuthInterceptor } from '';
+
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 
@@ -24,7 +27,6 @@ import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
 import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
-import { UpdateUserRoleComponent } from './components/update-user-role/update-user-role.component';
 // import { AuthInterceptor } from './core/auth.interceptor';
 // import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
@@ -43,8 +45,7 @@ import { UpdateUserRoleComponent } from './components/update-user-role/update-us
     AlertMsgComponent,
     TypesComponent,
     DrugCompanyComponent,
-    DrugCategoriesComponent,
-    UpdateUserRoleComponent
+    DrugCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,9 @@ import { UpdateUserRoleComponent } from './components/update-user-role/update-us
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    //FontAwesomeModule
+    // AngularFontAwesomeModule
   ],
   providers: [] ,
   bootstrap: [AppComponent]
