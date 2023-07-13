@@ -1,1 +1,77 @@
-<p>home works!</p>
+<!-- Start Landing  -->
+<div class="landing d-flex justify-content-center align-items-center">
+  <div class="text-center text-light landing-info">
+    <h1 class="title pt-3 pb-3 ps-5 pe-5 mb-5">Donate your excess drugs</h1>
+    <a
+      class="btn rounded-pill main-btn mb-3 fs-2"
+      [routerLink]="['register']"
+      [hidden]="isUserLogged"
+      >Donate</a
+    >
+    <a
+      class="btn rounded-pill main-btn mb-3 fs-2"
+      [routerLink]="['drugs']"
+      [hidden]="!isUserLogged"
+      >Drugs</a
+    >
+  </div>
+</div>
+<!-- End Landing  -->
+
+<!-- Start Features  -->
+<div class="features text-center pt-5 pb-5">
+  <div class="container">
+    <div class="main-title mt-5 mb-5 position-relative">
+      <h2>How to Donate</h2>
+      <p class="text-black-50 text-uppercase">Some Of These Stuff Under</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <div class="feat">
+          <div class="icon-holder position-relative mt-5">
+            <fa-icon
+              [icon]="fa1"
+              class="position-absolute bottom-0 number svg"
+            ></fa-icon>
+          </div>
+          <h4 class="mb-3 text-uppercase">Graphic Design</h4>
+          <p class="text-black-50 lh-lg">
+            Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
+            lacinia eget consectetur sed, convallis at tellus.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feat">
+          <div class="icon-holder position-relative mt-5">
+            <fa-icon
+              [icon]="fa2"
+              class="position-absolute bottom-0 number svg"
+            ></fa-icon>
+          </div>
+          <h4 class="mb-3 text-uppercase">Graphic Design</h4>
+          <p class="text-black-50 lh-lg">
+            Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
+            lacinia eget consectetur sed, convallis at tellus.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feat">
+          <div class="icon-holder position-relative mt-5">
+            <fa-icon
+              [icon]="fa3"
+              class="position-absolute bottom-0 number svg"
+            ></fa-icon>
+          </div>
+          <h4 class="mb-3 text-uppercase">Graphic Design</h4>
+          <p class="text-black-50 lh-lg">
+            Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
+            lacinia eget consectetur sed, convallis at tellus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Features  -->

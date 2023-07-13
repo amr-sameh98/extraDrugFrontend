@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 // import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { AuthInterceptor } from '';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 
@@ -24,6 +27,8 @@ import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
 import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FooterComponent } from './components/footer/footer.component';
 // import { AuthInterceptor } from './core/auth.interceptor';
 // import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
@@ -42,7 +47,8 @@ import { DrugCategoriesComponent } from './components/drug-categories/drug-categ
     AlertMsgComponent,
     TypesComponent,
     DrugCompanyComponent,
-    DrugCategoriesComponent
+    DrugCategoriesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,9 @@ import { DrugCategoriesComponent } from './components/drug-categories/drug-categ
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
+    // AngularFontAwesomeModule
   ],
   providers: [] ,
   bootstrap: [AppComponent]
