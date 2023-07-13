@@ -11,14 +11,14 @@ export class NavbarComponent implements OnInit {
   isUserLogged:boolean;
   constructor(private authService:UserAuthService , private router: Router) {
     this.isUserLogged=this.authService.isUserLogged;
-    console.log(this.isUserLogged);
+    //console.log(this.isUserLogged);
    }
 
   ngOnInit(): void {
         // this.isUserLogged=this.authService.isUserLogged;
     this.authService.getloggedStatus().subscribe(status=>{
       this.isUserLogged=status;
-      console.log(this.isUserLogged);
+      //console.log(this.isUserLogged);
     });
   }
 

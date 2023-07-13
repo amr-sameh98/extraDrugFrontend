@@ -12,11 +12,15 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./drug-form.component.css']
 })
 export class DrugFormComponent implements OnInit {
+  effectiveMaterialElement: string = '';
+  //this array is for a specific drug
+  effectiveMaterialElements: { id?: number , name: string }[] = [];
   drugForm: FormGroup;
   companiesList: { id: number , name: string }[] = []
   typesList: { id: number , name: string }[] = []
   categoriesList: { id: number , name: string }[] = []
-  effectiveMatrialsList: { id: number , name: string }[] = []
+  //this array is for a all drugs effective Materials
+  effectiveMatrialsList: { id?: number , name: string }[] = []
   httpOption;
   token: any
   drugId: any;
@@ -43,7 +47,7 @@ export class DrugFormComponent implements OnInit {
       categoryId: ['', [Validators.required]],
       effectiveMatrials: [''],
     }, );
-    this.token = localStorage.getItem('token');
+    //this.token = localStorage.getItem('token');
     this.httpOption = {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -73,6 +77,10 @@ export class DrugFormComponent implements OnInit {
           this.companyId?.setValue(this.drug.companyId);
           this.typeId?.setValue(this.drug.typeId);
           this.categoryId?.setValue(this.drug.categoryId);
+          this.effectiveMaterialElements=this.drug.effectiveMatrials;
+          console.log(this.drug.effectiveMatrials);
+
+
         },
       });
     }
@@ -114,6 +122,9 @@ export class DrugFormComponent implements OnInit {
   get categoryId() {
     return this.drugForm.get('categoryId');
   }
+  get effectiveMatrials() {
+    return this.drugForm.get('effectiveMatrials');
+  }
 
   getAllCompanies() {
    return this.httpClient.get<any>("http://localhost:5250/api/drug-companies" ).subscribe(data => {
@@ -138,17 +149,37 @@ export class DrugFormComponent implements OnInit {
 
    getAllEffectiveMatrials() {
     return this.httpClient.get<any>("http://localhost:5250/api/effective-matrials").subscribe(data => {
-    //  console.log(data);
-     this.effectiveMatrialsList = data.data
+      this.effectiveMatrialsList = data.data;
     })
    }
 
+   addEffectiveMaterial(elementname:any){
+    if (elementname!=='') {
+      let index=this.effectiveMatrialsList.findIndex((oldelement)=>oldelement.name==elementname);
+  if (index==-1) {
+  this.effectiveMaterialElements.push({"name":elementname});
+  }else{
+  this.effectiveMaterialElements.push(this.effectiveMatrialsList[index]);
+  }
+   this.effectiveMaterialElement='';
+    }
+  console.log(this.effectiveMaterialElements);
+  }
+  removeeffectiveMaterial(element:any){
+    this.effectiveMaterialElements=this.effectiveMaterialElements.filter((x)=>x.name!=element.name);
+    console.log(this.effectiveMaterialElements);
+    
+  }
+
   submit() {
+    if (this.effectiveMaterialElements.length!==0) {
+      
+    
     let drugModel: Idrug = this.drugForm.value as Idrug;
     drugModel.companyId = Number(this.companyId?.value)
     drugModel.typeId = Number(this.typeId?.value)
     drugModel.categoryId = Number(this.categoryId?.value)
-    drugModel.effectiveMatrials = []
+    drugModel.effectiveMatrials = this.effectiveMaterialElements
 
     if (this.drugForm.status == 'VALID') {
       if (this.drugId == 0) {
@@ -163,5 +194,7 @@ export class DrugFormComponent implements OnInit {
       }
       this.router.navigate(['/drugs']);
     }
+    }
+
   }
 }
