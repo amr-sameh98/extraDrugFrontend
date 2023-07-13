@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
     if(localStorage.getItem("role") == "Admin") {
       this.adminRole = true
     }
+    //console.log(this.isUserLogged);
    }
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class NavbarComponent implements OnInit {
 
     this.authService.getloggedStatus().subscribe(status=>{
       this.isUserLogged=status;
-      console.log(this.isUserLogged);
+      //console.log(this.isUserLogged);
     });
 
     if(localStorage.getItem("role") == "Admin") {
