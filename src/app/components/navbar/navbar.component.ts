@@ -9,17 +9,33 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 })
 export class NavbarComponent implements OnInit {
   isUserLogged:boolean;
+  adminRole : any
   constructor(private authService:UserAuthService , private router: Router) {
     this.isUserLogged=this.authService.isUserLogged;
     console.log(this.isUserLogged);
+
+    if(localStorage.getItem("role") == "Admin") {
+      this.adminRole = true
+    }
    }
 
   ngOnInit(): void {
         // this.isUserLogged=this.authService.isUserLogged;
+
+
+
     this.authService.getloggedStatus().subscribe(status=>{
       this.isUserLogged=status;
       console.log(this.isUserLogged);
     });
+
+    if(localStorage.getItem("role") == "Admin") {
+      this.adminRole = true
+    }
+    console.log("rolleee");
+
+    console.log(this.adminRole);
+
   }
 
   logout()
