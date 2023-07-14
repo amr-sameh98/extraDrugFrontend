@@ -1,1 +1,33 @@
-<p>update-user-role works!</p>
+<div class="container">
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>User Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usersList; index as i">
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>
+            <select #newRole class="form-select">
+                <option [selected]="user.roles[0]=='User'" value="User">User</option>
+                <option [selected]="user.roles[0]=='Admin'" value="Admin">Admin</option>
+            </select>
+            <button class="btn btn-info" (click)="updateRole(newRole.value,user.roles[0],user.id)">
+                Update role
+            </button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

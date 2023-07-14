@@ -13,6 +13,7 @@ import { CompanyFormComponent } from './components/drug-company-form/company-for
 import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
+import { UpdateUserRoleComponent } from './components/update-user-role/update-user-role.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -26,6 +27,8 @@ const routes: Routes = [
   {path : 'typeForm/:id/edit' , component: TypeFormComponent , canActivate: [authGuard]},
   {path : 'categoryForm/:id/edit' , component: CategoryFormComponent , canActivate: [authGuard]},
   {path : 'companyForm/:id/edit' , component: CompanyFormComponent , canActivate: [authGuard]},
+  {path : 'userRole' , component: UpdateUserRoleComponent , canActivate: [authGuard]},
+  
 ];
 
 @NgModule({
