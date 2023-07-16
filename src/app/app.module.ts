@@ -29,6 +29,11 @@ import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
 import { UpdateUserRoleComponent } from './components/update-user-role/update-user-role.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { ToastrModule } from 'ngx-toastr';
+
 // import { AuthInterceptor } from './core/auth.interceptor';
 
 @NgModule({
@@ -48,7 +53,8 @@ import { UpdateUserRoleComponent } from './components/update-user-role/update-us
     TypesComponent,
     DrugCompanyComponent,
     DrugCategoriesComponent
-    ,UpdateUserRoleComponent
+    ,UpdateUserRoleComponent, 
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,8 +62,10 @@ import { UpdateUserRoleComponent } from './components/update-user-role/update-us
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,MatCardModule
     // AngularFontAwesomeModule
   ],
   providers: [] ,

@@ -14,6 +14,7 @@ import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
 import { UpdateUserRoleComponent } from './components/update-user-role/update-user-role.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path : '' , component: HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path : 'categoryForm/:id/edit' , component: CategoryFormComponent , canActivate: [authGuard]},
   {path : 'companyForm/:id/edit' , component: CompanyFormComponent , canActivate: [authGuard]},
   {path : 'userRole' , component: UpdateUserRoleComponent , canActivate: [authGuard]},
+  {path : 'userProfile' , component: UserProfileComponent , canActivate: [authGuard]},
   
 ];
 

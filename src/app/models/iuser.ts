@@ -7,4 +7,6 @@ export interface Iuser {
   password: string;
   phoneNumber: string;
   roles:string[]
+  photo: string,
+  drugs: []
 }

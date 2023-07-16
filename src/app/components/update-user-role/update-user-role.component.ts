@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Iuser } from 'src/app/models/iuser';
@@ -12,6 +13,7 @@ export class UpdateUserRoleComponent implements OnInit {
   usersList : Iuser[] = []
   constructor(
     private userAuthService: UserAuthService,
+    private toastr:ToastrService,
     private userOperationsService: UserOperationsService
     ) {
     
@@ -38,12 +40,35 @@ export class UpdateUserRoleComponent implements OnInit {
         console.log(x);
         this.userAuthService.removeRole(userid,roleToRemove).subscribe({
           next:(x)=>{console.log(x);
+            this.toastr.success(`${roleToRemove}${x.message} and ${roleToAdd} role is added`,"",{
+              disableTimeOut:false,
+              titleClass:"toaster_title",
+              messageClass:"toaster_message",
+              timeOut:5000,
+              closeButton:true
+            })
           this.getAllusers();
           }
-          ,error(y){console.log(y)}
+          ,error:(y)=>{console.log(y);
+            this.toastr.success(`${y.message}`,"",{
+              disableTimeOut:false,
+              titleClass:"toaster_title",
+              messageClass:"toaster_message",
+              timeOut:5000,
+              closeButton:true
+            })
+          }
         });
       }
-        ,error(y){console.log(y)}
+        ,error:(y)=>{console.log(y);
+          this.toastr.success(`${y.message}`,"",{
+            disableTimeOut:false,
+            titleClass:"toaster_title",
+            messageClass:"toaster_message",
+            timeOut:5000,
+            closeButton:true
+          })
+        }
     });
     
   }
