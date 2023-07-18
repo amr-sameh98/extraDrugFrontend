@@ -1,20 +1,17 @@
 import { UserOperationsService } from 'src/app/services/user-operations.service';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Iuser } from 'src/app/models/iuser';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import {Location} from '@angular/common';
 import { environment } from 'src/environments/environment.development';
-
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent  {
   userLoginForm: FormGroup;
   isUserLogged: boolean = false;
   ifError : boolean = false
