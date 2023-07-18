@@ -1,8 +1,12 @@
 export interface Iuser {
   firstName: string;
-  lastName: string
+  lastName: string;
+  id:string;
   username: string;
   email: string;
   password: string;
-  PhoneNumber: string;
+  phoneNumber: string;
+  roles:string[]
+  photo: string,
+  drugs: []
 }

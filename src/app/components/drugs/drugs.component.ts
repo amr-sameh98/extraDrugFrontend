@@ -1,8 +1,6 @@
 import { DrugsService } from './../../services/drugs.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Icompany } from 'src/app/models/icompany';
 import { Idrug } from 'src/app/models/idrug';
 import Swal from 'sweetalert2';
 
@@ -15,7 +13,7 @@ export class DrugsComponent implements OnInit {
   drugsList : Idrug[] = []
   // companiesList: { id: number , name: string }[] = []
 
-    constructor(private httpClient : HttpClient , private router: Router , private activatedRoute: ActivatedRoute, private drugsService: DrugsService ) {
+    constructor( private router: Router , private activatedRoute: ActivatedRoute, private drugsService: DrugsService ) {
 
   }
 

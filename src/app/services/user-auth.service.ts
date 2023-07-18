@@ -26,7 +26,7 @@ export class UserAuthService implements OnInit {
     history.pushState(null, '');
   }
 
-  login(email: string, password: string)
+  login(email: string, password: string)//http://localhost:5250/api/auth/add-role-to-user
   {
     // Call login API, and get Access Token
     return this.httpClient
@@ -56,6 +56,18 @@ export class UserAuthService implements OnInit {
   getloggedStatus(): Observable<boolean>
   {
     return this.isloggedSubject.asObservable();
+  }
+  addRole(userId: string, role: string)// "User","Admin"
+  {
+    // Call add role API, and adding role
+    return this.httpClient
+    .post<any>("http://localhost:5250/api/auth/add-role-to-user",{userId: `${userId}` , role: `${role}`} , this.httpOption);
+  }
+  removeRole(userId: string, role: string)// "User","Admin"
+  {
+    // Call remove role API, and removing role
+    return this.httpClient
+    .post<any>("http://localhost:5250/api/auth/remove-role-from-user",{userId: `${userId}` , role: `${role}`} , this.httpOption);
   }
 
   // private handleError(error: HttpErrorResponse) {

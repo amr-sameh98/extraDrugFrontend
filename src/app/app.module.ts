@@ -1,3 +1,4 @@
+import { FooterComponent } from './components/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,10 +28,14 @@ import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
 import { TypesComponent } from './components/drug-types/types.component';
 import { DrugCompanyComponent } from './components/drug-companies/drug-company.component';
 import { DrugCategoriesComponent } from './components/drug-categories/drug-categories.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { FooterComponent } from './components/footer/footer.component';
+import { UpdateUserRoleComponent } from './components/update-user-role/update-user-role.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { ToastrModule } from 'ngx-toastr';
+import { EditUserProfileComponent } from './components/edit-user-profile/edit-user-profile.component';
+
 // import { AuthInterceptor } from './core/auth.interceptor';
-// import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
 @NgModule({
   declarations: [
@@ -45,10 +50,13 @@ import { FooterComponent } from './components/footer/footer.component';
     CategoryFormComponent,
     CompanyFormComponent,
     AlertMsgComponent,
+    FooterComponent,
     TypesComponent,
     DrugCompanyComponent,
-    DrugCategoriesComponent,
-    FooterComponent
+    DrugCategoriesComponent
+    ,UpdateUserRoleComponent, 
+    UserProfileComponent,
+    EditUserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +64,10 @@ import { FooterComponent } from './components/footer/footer.component';
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,MatCardModule
     // AngularFontAwesomeModule
   ],
   providers: [] ,
