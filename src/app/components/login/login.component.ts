@@ -48,7 +48,7 @@ export class LoginComponent  {
           localStorage.setItem("role", role);
 
 
-          console.log(token);
+          //console.log(token);
           history.pushState(null, '');
           this.authService.isloggedSubject.next(true);
           this.isUserLogged= this.authService.isUserLogged;
