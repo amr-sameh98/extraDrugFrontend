@@ -34,13 +34,13 @@ export class UpdateUserRoleComponent implements OnInit {
   updateRole(roleToAdd:string,roleToRemove:string,userid:string){
     
     this.userAuthService.addRole(userid,roleToAdd).subscribe({
-      next:(x)=>{
+      next:(res)=>{
         //if role was added successfully then the old role is removed
         //show a toster to confirm changes
-        console.log(x);
+        console.log(res);
         this.userAuthService.removeRole(userid,roleToRemove).subscribe({
           next:(x)=>{console.log(x);
-            this.toastr.success(`${roleToRemove}${x.message} and ${roleToAdd} role is added`,"",{
+            this.toastr.success(`${res.message}`,"",{
               disableTimeOut:false,
               titleClass:"toaster_title",
               messageClass:"toaster_message",

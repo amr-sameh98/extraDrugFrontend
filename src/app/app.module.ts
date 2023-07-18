@@ -33,6 +33,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ToastrModule } from 'ngx-toastr';
+import { EditUserProfileComponent } from './components/edit-user-profile/edit-user-profile.component';
 
 // import { AuthInterceptor } from './core/auth.interceptor';
 
@@ -55,6 +56,7 @@ import { ToastrModule } from 'ngx-toastr';
     DrugCategoriesComponent
     ,UpdateUserRoleComponent, 
     UserProfileComponent,
+    EditUserProfileComponent
   ],
   imports: [
     BrowserModule,

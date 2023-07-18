@@ -1,30 +1,28 @@
 import { UserOperationsService } from './../../services/user-operations.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Iuser } from 'src/app/models/iuser';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Ipassword } from 'src/app/models/ipssword';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.development';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-   userData = {} as Iuser;
-  userID:any
-  passwordForm:FormGroup
-  constructor(private activatedRoute:ActivatedRoute,
+  userData = {} as Iuser;
+  userProfilePicture:string="";
+  
+  fileName: string='';
+  selecetdFile : any;
+  
+  constructor(
+    private router:Router,
     private toastr:ToastrService,
     private userOperationsService:UserOperationsService,
-    private fb: FormBuilder ,
     ) {
-      this.passwordForm = fb.group({
-        OldPassword: ['', [Validators.required]],
-        NewPassword: ['', [Validators.required]],
-        confirmPassword: ['', [Validators.required]],
-        
-      }, );
+
          
   }
   ngOnInit(): void {
@@ -32,37 +30,24 @@ export class UserProfileComponent implements OnInit {
     this.getUserprofile();
     
   }
-  //OldPassword:string;
-    //NewPassword:string
-  get OldPassword() {
-    return this.passwordForm.get('OldPassword');
+  editUserData(){
+   
+      this.router.navigate(['/editProfile'])
+     
   }
+  onFileUpload(event:any){
 
-  get NewPassword() {
-    return this.passwordForm.get('NewPassword');
-  }
-
-  get confirmPassword() {
-    return this.passwordForm.get('confirmPassword');
-  }
-  getUserprofile(){
-    this.userOperationsService.getUserprofile().subscribe({
-    next:(data)=>{ this.userData=data.data;
-    //console.log(this.userData);
-    },error(err) {
-    console.log(err)
-    },
-  
-    })
-  }
-  submit(){
-
-    let passModel:Ipassword=this.passwordForm.value as Ipassword; 
+    let PhotoFile:File =event.target.files[0];
+    this.selecetdFile=event.target.files[0];
+    this.fileName = PhotoFile.name;
+    console.log(this.fileName);
+    console.log(PhotoFile);
     
-    console.log( passModel);
-    console.log(this.NewPassword?.value);
 
-    this.userOperationsService.changePassword(passModel).subscribe({
+  }
+  OnUploadFile(){
+    console.log(this.selecetdFile)
+    this.userOperationsService.uploadUserPhoto(this.selecetdFile).subscribe({
       next:(data)=>{ 
         this.toastr.success(`${data.message}`,"",{
           disableTimeOut:false,
@@ -72,19 +57,42 @@ export class UserProfileComponent implements OnInit {
           closeButton:true
         })
         
-      console.log(data);
-      },error:(err)=>{
-      console.log(err.message);
-      this.toastr.error(`${err.message}`,"",{
+      //console.log(data);
+      },error:(error)=>{
+      console.log(error?.error);
+      this.toastr.error(`${error?.error?.message}`,"",{
         disableTimeOut:false,
         titleClass:"toaster_title",
         messageClass:"toaster_message",
         timeOut:5000,
         closeButton:true
       })
-      },
-    
-      })
+      }
+
+    })
   }
+  showPicture(){
+  //show user picture    
+  }
+  
+
+  getUserprofile(){
+    this.userOperationsService.getUserprofile().subscribe({
+    next:(data)=>{ 
+      this.userData=data.data;
+      this.userProfilePicture=environment.baseURL+data.data.photo;
+      
+
+    //console.log(this.userData);
+    //console.log(this.userProfilePicture);
+    //console.log(environment.profilepic);
+    },error(err) {
+    console.log(err)
+    },
+  
+    })
+  }
+  
+  
 
 }

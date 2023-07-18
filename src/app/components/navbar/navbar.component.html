@@ -72,12 +72,12 @@
         </li>
         <li>
           <a class="nav-item p-2 p-lg-3" 
-          [routerLink]="['userProfile']"
+            [routerLink]="['userProfile']"
             [routerLinkActive]="'active'"
             [routerLinkActiveOptions]="{ exact: true }"
             [hidden]="!isUserLogged "
           >
-            <img class="logo" src="../../../assets/1.jpg" alt="" />
+            <img class="logo" [src]="userProfilePicture" alt="" />
           </a>
         </li>
         <!-- </ng-component> -->

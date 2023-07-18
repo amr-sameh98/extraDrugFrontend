@@ -1,9 +1,11 @@
+import { UserOperationsService } from 'src/app/services/user-operations.service';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Iuser } from 'src/app/models/iuser';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import {Location} from '@angular/common';
+import { environment } from 'src/environments/environment.development';
 
 
 
@@ -20,7 +22,11 @@ export class LoginComponent {
 
   // Validators.pattern('^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$')
 
-  constructor(private fb: FormBuilder , private authService: UserAuthService , private router: Router , private location:Location) {
+  constructor(private fb: FormBuilder ,
+    private authService: UserAuthService ,
+    private userOperationsService:UserOperationsService,
+    private router: Router , 
+    private location:Location) {
     this.userLoginForm = fb.group({
       email: ['', [Validators.required,  ]],
       password: ['', [Validators.required]],
@@ -49,7 +55,13 @@ export class LoginComponent {
           let role = res.data.roles[0]
           localStorage.setItem("token", token);
           localStorage.setItem("role", role);
-
+          ///getting his profile picture
+          this.userOperationsService.getUserprofile().subscribe({
+            next:(res)=>{
+            environment.profilepic=environment.baseURL+res.data.photo;
+            //console.log(environment.profilepic);
+            }
+          })
 
           //console.log(token);
           history.pushState(null, '');
