@@ -22,6 +22,17 @@
           <a
             class="nav-link p-2 p-lg-3"
             aria-current="page"
+            [routerLink]="['userRole']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged || !adminRole"
+            >userRole</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link p-2 p-lg-3"
+            aria-current="page"
             [routerLink]="['drugs']"
             [routerLinkActive]="'active'"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -58,6 +69,16 @@
             [hidden]="!isUserLogged || !adminRole"
             >Drug Categories</a
           >
+        </li>
+        <li>
+          <a class="nav-item p-2 p-lg-3" 
+            [routerLink]="['userProfile']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged "
+          >
+            <img class="logo" [src]="userProfilePicture" alt="" />
+          </a>
         </li>
         <!-- </ng-component> -->
       </ul>

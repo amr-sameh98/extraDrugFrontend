@@ -1,0 +1,160 @@
+
+<!--   edit profile   -->
+<div class="container mb-4 mt-4 p-3 border border-2">
+  <div class="header fw-bold">
+      Edit your data
+  </div>
+
+  
+  <form [formGroup]="editDataForm" class="m-3" (ngSubmit)="submitProfileData()">
+      <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            
+          />
+          <div
+            class="alert alert-warning"
+            [hidden]="firstName?.valid || firstName?.untouched"
+          >
+            <small *ngIf="firstName?.errors?.['required']">First Name is required </small>
+          </div>
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          formControlName="lastName"
+          class="form-control"
+          id="lastName"
+          name="lastName"
+        />
+        <div
+          class="alert alert-warning"
+          [hidden]="lastName?.valid || lastName?.untouched"
+        >
+          <small *ngIf="lastName?.errors?.['required']">Last Name is required </small>
+        </div>
+    </div>
+      <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+          #newPass
+            type="text"
+            formControlName="username"
+            class="form-control"
+            id="username"
+            name="username"
+          />
+          <div
+            class="alert alert-warning"
+            [hidden]="username?.valid || username?.untouched"
+          >
+            <small *ngIf="username?.errors?.['required']">Username is required </small>
+          </div>
+      </div>
+      <div class="mb-3">
+         
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input
+          #conNewPass
+            type="text"
+            formControlName="phoneNumber"
+            class="form-control"
+            id="phoneNumber"
+            name="phoneNumber"
+          />
+          <div
+            class="alert alert-warning"
+            [hidden]="phoneNumber?.valid|| phoneNumber?.untouched"
+          >
+          <small *ngIf="phoneNumber?.errors?.['required']">Phone Number is required </small>
+          <small *ngIf="phoneNumber?.errors?.['maxlength']">phone Length must be 11 </small>
+          <small *ngIf="phoneNumber?.errors?.['minlength']">phone Length must be 11 </small>
+          </div>
+        </div>
+        <button
+    [disabled]="editDataForm.invalid"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Edit profile
+  </button>
+  </form>
+</div>
+
+<!-- changing password   -->
+<div class="container mb-4 p-3 border border-2">
+    <div class="header fw-bold">
+        Change your password
+    </div>
+
+    
+    
+    <form [formGroup]="passwordForm" class="m-3" (ngSubmit)="submitPass()">
+        <div class="mb-3">
+            <label for="password" class="form-label">Current Password</label>
+            <input
+              type="password"
+              formControlName="OldPassword"
+              class="form-control"
+              id="password"
+              name="password"
+            />
+            <div
+              class="alert alert-warning"
+              [hidden]="OldPassword?.valid || OldPassword?.untouched"
+            >
+              <small *ngIf="OldPassword?.errors?.['required']"> old password is required </small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="newpassword" class="form-label">New Password</label>
+            <input
+            #aNewPass
+              type="password"
+              formControlName="NewPassword"
+              class="form-control"
+              id="newpassword"
+              name="newpassword"
+            />
+            <div
+              class="alert alert-warning"
+              [hidden]="NewPassword?.valid || NewPassword?.untouched"
+            >
+              <small *ngIf="NewPassword?.errors?.['required']"> new password is required </small>
+            </div>
+        </div>
+        <div class="mb-3">
+           
+            <label for="password" class="form-label">Confirm Password</label>
+            <input
+                #confirmNewPass
+              type="password"
+              formControlName="confirmPassword"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+            />
+            <div
+              class="alert alert-warning"
+              [hidden]="(confirmPassword?.valid&& aNewPass.value==confirmNewPass.value)|| confirmPassword?.untouched"
+            >
+            <small *ngIf="confirmPassword?.errors?.['required']">confirmed Password is required </small>
+            <small *ngIf="aNewPass.value!=confirmNewPass.value">Password not matched </small>
+             
+            </div>
+          </div>
+          <button
+      [disabled]="passwordForm.invalid || aNewPass.value!=confirmNewPass.value"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Change Password
+    </button>
+    </form>
+</div>

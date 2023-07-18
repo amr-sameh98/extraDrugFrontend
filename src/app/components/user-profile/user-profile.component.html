@@ -1,0 +1,33 @@
+
+<div *ngIf="userData" class="mb-2 main-div">
+    <mat-card class="card">
+        <mat-card-header>
+            <div mat-card-avatar>
+                <img [src]="userProfilePicture" class="header-image">
+                <!-- <a [href]="userProfilePicture">photo</a> -->
+            </div>
+            <mat-card-title>{{userData.firstName}}</mat-card-title>
+            <mat-card-subtitle>{{userData.username}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="fs-5">
+            <p><span class="fw-bold">Full Name</span> {{userData.firstName}} {{userData.lastName}}</p>
+            <p><span class="fw-bold">Email</span> {{userData.email}}</p>
+            <p><span class="fw-bold">phone Number</span> {{userData.phoneNumber}}</p>
+        </mat-card-content>
+        <mat-card-footer>
+            <button class="btn btn-primary m-3" (click)="editUserData()">Edit Profile</button>
+            
+            <div>
+                <input style="display: none" accept="image/*" type="file" (change)="onFileUpload($event)" #selectFile>
+                <button class="btn btn-primary mx-3" (click)="selectFile.click()">Upload Photo</button>
+                <button *ngIf="fileName" class="btn btn-warning" (click)="OnUploadFile()">Update Photo</button>
+                <span class="mx-3">{{fileName || "No file uploaded yet."}}</span>
+                <div class="imagePreview" *ngIf="fileName">
+                    <img [src]="selectFile.value" >
+                  </div>
+            </div>
+            </mat-card-footer>
+    </mat-card>
+</div>
+
+
