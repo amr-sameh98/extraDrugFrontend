@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+// import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -10,6 +10,6 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent {
 
-  faBook = faBook
+  // faBook = faBook
 
 }
