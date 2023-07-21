@@ -30,7 +30,7 @@ export class UserAuthService implements OnInit {
   {
     // Call login API, and get Access Token
     return this.httpClient
-    .post<any>("http://localhost:5250/api/auth/login",{email: `${email}` , password: `${password}`} , this.httpOption);
+    .post<any>("http://localhost:5250/api/auth/admin/login",{email: `${email}` , password: `${password}`} , this.httpOption);
   }
 
   register(user: Iuser)

@@ -3,42 +3,29 @@
     <div class="row">
       <div class="col-6 col-lg-4">
         <div class="info mb-5">
-          <!-- <img src="imgs/logo.png" alt="" class="mb-4" /> -->
-          <img class="logo mb-4" src="../../../assets/logo.png" alt="" />
-          <span class="p-2 p-lg-3 fs-3 logo-word">extraDrug</span>
+          <a [routerLink]="['']">
+            <img class="logo mb-4" src="../../../assets/logo.png" alt="" />
+            <span class="p-2 p-lg-3 fs-3 logo-word">extraDrug</span>
+          </a>
 
           <p class="mb-5">
-            Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
-            lacinia eget consectetur sed, convallis at tellus.
+            Donate excess drug to those in need<br />Find the drug you want with
+            need quantity
           </p>
           <div class="copyright">
-            Created By <span>Graphberry</span>
-            <div>&copy; 2022 - <span>Bondi Inc</span></div>
+            Created By <span>ITI .Net Team</span>
+            <div>&copy; 2023 - <span>Mansoura</span></div>
           </div>
         </div>
       </div>
+      <div class="col-6 col-lg-2"></div>
       <div class="col-6 col-lg-2">
         <div class="links">
           <h5 class="text-light">Links</h5>
           <ul class="list-unstyled lh-lg">
-            <li>Home</li>
-            <li>Our Services</li>
-            <li>Portfolio</li>
-            <li>Testimonials</li>
-            <li>Support</li>
-            <li>Terms and Condition</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-6 col-lg-2">
-        <div class="links">
-          <h5 class="text-light">About Us</h5>
-          <ul class="list-unstyled lh-lg">
-            <li>Sign In</li>
-            <li>Register</li>
-            <li>About Us</li>
-            <li>Blog</li>
-            <li>Contact Us</li>
+            <li><a [routerLink]="['login']">Sign In</a></li>
+            <li><a [routerLink]="['register']">Register</a></li>
+            <li><a [routerLink]="['contact']">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -46,12 +33,11 @@
         <div class="contact">
           <h5 class="text-light">Contact Us</h5>
           <p class="lh-lg mt-3 mb-5">
-            Get in touch with us via mail phone.We are waiting for your call or
-            message
+            Get in touch with us via mail email. We are waiting for your message
           </p>
-          <a class="btn rounded-pill main-btn w-100" href="#"
-            >graphberry@gmail.com</a
-          >
+          <p class="btn rounded-pill main-btn w-100" href="#">
+            ITIMansoura@gmail.com
+          </p>
           <ul class="d-flex justify-content-evenly mt-5 list-unstyled gap-1">
             <li>
               <a class="d-block text-light" href="#">

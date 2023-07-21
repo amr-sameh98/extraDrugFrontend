@@ -14,8 +14,6 @@ import { fa1 , fa2 , fa3 } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
   isUserLogged:boolean;
-
-  // faPencil =faPencil
   fa1 = fa1
   fa2 = fa2
   fa3 = fa3

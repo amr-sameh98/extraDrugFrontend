@@ -18,7 +18,7 @@ export class  loginGuard implements CanActivate {
     }
     else
     {
-      // alert ('You already login ...');
+      alert ('You already login ...');
       this.router.navigate(['']);
       return false
     }

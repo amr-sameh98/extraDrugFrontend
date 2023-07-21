@@ -5,7 +5,6 @@ import { HomeComponent } from './components/home/home.component';
 import { DrugsComponent } from './components/drugs/drugs.component';
 import { authGuard } from './gaurds/auth.guard';
 import { loginGuard } from './gaurds/login.guard';
-import { RegisterComponent } from './components/register/register.component';
 import { DrugFormComponent } from './components/drug-form/drug-form.component';
 import { TypeFormComponent } from './components/drug-type-form/type-form.component';
 import { CategoryFormComponent } from './components/drug-category-form/category-form.component';
@@ -20,7 +19,6 @@ import { EditUserProfileComponent } from './components/edit-user-profile/edit-us
 const routes: Routes = [
   {path : '' , component: HomeComponent},
   {path : 'login' , component: LoginComponent , canActivate: [loginGuard]},
-  {path : 'register' , component: RegisterComponent },
   {path : 'drugs' , component: DrugsComponent , canActivate: [authGuard]},
   {path : 'drugTypes' , component: TypesComponent , canActivate: [authGuard]},
   {path : 'drugCategories' , component: DrugCategoriesComponent , canActivate: [authGuard]},
@@ -32,7 +30,7 @@ const routes: Routes = [
   {path : 'userRole' , component: UpdateUserRoleComponent , canActivate: [authGuard]},
   {path : 'userProfile' , component: UserProfileComponent , canActivate: [authGuard]},
   {path : 'editProfile' , component: EditUserProfileComponent , canActivate: [authGuard]},
-  
+
 ];
 
 @NgModule({

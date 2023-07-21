@@ -17,7 +17,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DrugsComponent } from './components/drugs/drugs.component';
-import { RegisterComponent } from './components/register/register.component';
 import { DrugFormComponent } from './components/drug-form/drug-form.component';
 
 import { CoreModule } from './core/core.module';
@@ -44,7 +43,6 @@ import { EditUserProfileComponent } from './components/edit-user-profile/edit-us
     LoginComponent,
     HomeComponent,
     DrugsComponent,
-    RegisterComponent,
     DrugFormComponent,
     TypeFormComponent,
     CategoryFormComponent,
@@ -54,7 +52,7 @@ import { EditUserProfileComponent } from './components/edit-user-profile/edit-us
     TypesComponent,
     DrugCompanyComponent,
     DrugCategoriesComponent
-    ,UpdateUserRoleComponent, 
+    ,UpdateUserRoleComponent,
     UserProfileComponent,
     EditUserProfileComponent
   ],
