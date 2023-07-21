@@ -29,29 +29,31 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
         // this.isUserLogged=this.authService.isUserLogged;
 
-
-
     this.authService.getloggedStatus().subscribe(status=>{
       this.isUserLogged=status;
       //this.userProfilePicture=environment.profilepic;
       //console.log(this.isUserLogged);
+    this.getUserProfilePicture();
+
     });
 
-    ///getting his profile picture
+    
+    if(localStorage.getItem("role") == "Admin") {
+      this.adminRole = true
+    }
+    //console.log("rolleee");
+    console.log(this.adminRole);
+
+  }
+
+  getUserProfilePicture(){
+    ///getting profile picture
     this.userOperationsService.getUserprofile().subscribe({
       next:(res)=>{
       this.userProfilePicture=environment.baseURL+res.data.photo;
       
       }
     })
-
-    if(localStorage.getItem("role") == "Admin") {
-      this.adminRole = true
-    }
-    console.log("rolleee");
-
-    console.log(this.adminRole);
-
   }
 
   logout()
