@@ -39,7 +39,7 @@ export class UserOperationsService {
   editUserData(newData: Iuser) {
     return this.httpClient.put<any>(`${environment.baseURL}/api/user`, newData , this.httpOption);
   }
-  uploadUserPhoto(photo: File) {
+  uploadUserPhoto(photo: any) {
     return this.httpClient.patch<any>(`${environment.baseURL}/api/user/photo`, photo );
   }
 
