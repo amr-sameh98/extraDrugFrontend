@@ -22,9 +22,9 @@
                 <button class="btn btn-primary mx-3" (click)="selectFile.click()">Upload Photo</button>
                 <button *ngIf="fileName" class="btn btn-warning" (click)="OnUploadFile()">Update Photo</button>
                 <span class="mx-3">{{fileName || "No file uploaded yet."}}</span>
-                <div class="imagePreview" *ngIf="fileName">
-                    <img [src]="selectFile.value" >
-                  </div>
+                <!-- <div class="imagePreview" ></div>
+                    <img #imageForUserProfile *ngIf="fileName" id="fff" [src]="userNewImage" > -->
+                
             </div>
             </mat-card-footer>
     </mat-card>
